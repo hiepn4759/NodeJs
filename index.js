@@ -1,0 +1,35 @@
+var express = require('express');
+var app = express();
+var bodyParser = require('body-parser');
+var shortid = require('shortid');
+
+
+var db = require('./db');
+var userRoute = require('./routes/user.route');
+
+
+app.use(bodyParser.json()); //for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true}));//for parsing application/x-www-form-urlencoded
+app.use(express.static('public'));
+
+var port = 3000;
+
+app.set('view engine', 'pug');
+app.set('views', './views');
+
+
+app.get('/', function(req, res){
+	// response.send('<h1>Nguyen Sy Hiep</h1><a href = "/users">User list</a>');
+	res.render('index',{
+		name: 'AAA'
+	});
+	// res.render('views/index.pug');
+});
+
+
+app.use('/users', userRoute);
+
+
+app.listen(port, function(){
+	console.log('Server listening on port' + port);
+});
