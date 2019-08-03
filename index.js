@@ -7,6 +7,7 @@ var shortid = require('shortid');
 var db = require('./db');
 var userRoute = require('./routes/user.route');
 
+var authRoute = require('./routes/auth.route');
 
 app.use(bodyParser.json()); //for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true}));//for parsing application/x-www-form-urlencoded
@@ -29,6 +30,7 @@ app.get('/', function(req, res){
 
 app.use('/users', userRoute);
 
+app.use('/auth', authRoute);
 
 app.listen(port, function(){
 	console.log('Server listening on port' + port);
