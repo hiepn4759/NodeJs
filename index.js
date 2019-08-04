@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var shortid = require('shortid');
-
+var cookieParser = require('cookie-parser');
 
 var db = require('./db');
 var userRoute = require('./routes/user.route');
@@ -12,6 +12,7 @@ var authRoute = require('./routes/auth.route');
 app.use(bodyParser.json()); //for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true}));//for parsing application/x-www-form-urlencoded
 app.use(express.static('public'));
+app.use(cookieParser());
 
 var port = 3000;
 
