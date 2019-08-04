@@ -13,4 +13,8 @@ html
 						a(class="nav-link", href="/users") Users 
 		.container.pt-5
 		
+			if user
+				p= user.name
+
+
 			block content
