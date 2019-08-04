@@ -1,3 +1,6 @@
+require('dotenv').config();
+
+
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
@@ -12,7 +15,7 @@ var authRoute = require('./routes/auth.route');
 app.use(bodyParser.json()); //for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true}));//for parsing application/x-www-form-urlencoded
 app.use(express.static('public'));
-app.use(cookieParser('addsadsadwqdsadase'));
+app.use(cookieParser(process.env.SESSION_SECRET));
 
 var port = 3000;
 
