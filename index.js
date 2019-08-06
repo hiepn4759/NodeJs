@@ -12,6 +12,8 @@ var userRoute = require('./routes/user.route');
 
 var authRoute = require('./routes/auth.route');
 
+var productRoute = require('./routes/product.router');
+
 app.use(bodyParser.json()); //for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true}));//for parsing application/x-www-form-urlencoded
 app.use(express.static('public'));
@@ -35,6 +37,8 @@ app.get('/', function(req, res){
 app.use('/users', userRoute);
 
 app.use('/auth', authRoute);
+
+app.use('/products', productRoute);
 
 app.listen(port, function(){
 	console.log('Server listening on port' + port);
