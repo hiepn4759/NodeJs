@@ -5,6 +5,10 @@ var validate = require('../validate/user.validate');
 var controller = require('../controllers/user.controller');
 var authMiddleware = require('../middlewares/auth.middlewares');
 
+var multer  = require('multer');
+var upload = multer({ dest: './public/uploads/' });
+
+
 
 router.get('/', authMiddleware.requireAuth ,controller.index);
 
@@ -19,6 +23,6 @@ router.get('/create', controller.create);
 
 router.get('/:id', controller.get);
 
-router.post('/create', validate.postCreate ,controller.postCreate);
+router.post('/create', upload.single('avatar'), validate.postCreate ,controller.postCreate);
 
 module.exports = router;
