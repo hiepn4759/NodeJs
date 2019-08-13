@@ -36,7 +36,7 @@ app.use(cookieParser(process.env.SESSION_SECRET));
 app.use(sessionMiddleware);
 app.use(csurf({ cookie: true }));
 
-var port = 3000;
+var port = process.env.PORT || 3000;
 
 app.set('view engine', 'pug');
 app.set('views', './views');
